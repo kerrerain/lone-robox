@@ -1,9 +1,10 @@
-function component () {
-  var element = document.createElement('div');
+(function init(doc) {
+  function component() {
+    const element = doc.createElement('div');
 
-  element.innerHTML = 'Hello Lone Robox!';
+    element.innerHTML = 'Hello Lone Robox!';
 
-  return element;
-}
-
-document.body.appendChild(component());
+    return element;
+  }
+  doc.body.appendChild(component());
+}(window.document));
