@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 const pixiPath = path.resolve(__dirname, 'node_modules/pixi.js');
@@ -31,10 +32,14 @@ module.exports = {
     }]
   },
   plugins: [
-    //new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Lone Robox',
       template: './app/index.html'
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from: 'app/assets',
+      to: 'assets'
+    }])
   ]
 };
