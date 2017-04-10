@@ -24,5 +24,8 @@
     "mocha": "^3.2.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "pixi.js": "^4.4.4"
   }
 }

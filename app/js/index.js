@@ -1,10 +1,5 @@
-(function init(doc) {
-  function component() {
-    const element = doc.createElement('div');
+import { Application } from 'pixi.js';
 
-    element.innerHTML = 'Hello Lone Robox!';
+const app = new Application();
 
-    return element;
-  }
-  doc.body.appendChild(component());
-}(window.document));
+document.body.appendChild(app.view);
