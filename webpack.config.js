@@ -32,7 +32,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    //new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Lone Robox',
       template: './app/index.html'
