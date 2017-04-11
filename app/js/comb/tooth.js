@@ -26,8 +26,7 @@ class Tooth {
   position(x, y) {
     this.strip.x = x;
     this.strip.y = y;
-    this.skeleton.graphics.x = x;
-    this.skeleton.graphics.y = y;
+    this.skeleton.position(x, y);
   }
 
   activateClick() {
@@ -37,12 +36,8 @@ class Tooth {
   }
 
   render() {
-    const position = this.oscillator.run(1);
-
-    for (let i = 0; i < this.skeleton.points.length; i += 1) {
-      this.skeleton.points[i].x = i * position;
-    }
-
+    const x = this.oscillator.run(1);
+    this.skeleton.pointsPositionX(x);
     this.skeleton.render();
   }
 }

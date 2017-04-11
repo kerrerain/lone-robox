@@ -1,7 +1,7 @@
 import { Point, Graphics } from 'pixi.js';
 
 class PointsFactory {
-  static createPoints(number, length) {
+  static create(number, length) {
     const points = [];
 
     for (let i = 0; i < number; i += 1) {
@@ -15,7 +15,18 @@ class PointsFactory {
 class ToothSkeleton {
   constructor(number, length) {
     this.graphics = new Graphics();
-    this.points = PointsFactory.createPoints(number, length);
+    this.points = PointsFactory.create(number, length);
+  }
+
+  position(x, y) {
+    this.graphics.x = x;
+    this.graphics.y = y;
+  }
+
+  pointsPositionX(x) {
+    for (let i = 0; i < this.points.length; i += 1) {
+      this.points[i].x = i * x;
+    }
   }
 
   render() {
