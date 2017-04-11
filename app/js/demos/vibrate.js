@@ -4,7 +4,8 @@ import Tooth from '../comb/tooth';
 const GLOBAL_OPTIONS = {
   points: 5,
   length: 80,
-  displayPoints: true,
+  displayPoints: false,
+  clickable: true,
   oscillator: {
     gamma: 0.02,
     omega1: 15,
@@ -16,31 +17,12 @@ const GLOBAL_OPTIONS = {
 class DemoVibrate {
   constructor() {
     this.app = new Application();
+
     this.tooth = new Tooth(GLOBAL_OPTIONS);
-    this.tooth.strip.x = this.app.renderer.width / 2;
-    this.tooth.strip.y = this.app.renderer.height / 4;
-    this.tooth.skeleton.graphics.x = this.tooth.strip.x;
-    this.tooth.skeleton.graphics.y = this.tooth.strip.y;
+    this.tooth.position(this.app.renderer.width / 2, this.app.renderer.height / 4);
+    this.tooth.addToContainer(this.app.stage);
 
-    this.app.stage.addChild(this.tooth.strip);
-
-    if (GLOBAL_OPTIONS.displayPoints) {
-      this.app.stage.addChild(this.tooth.skeleton.graphics);
-    }
-
-    this.app.ticker.add(() => this.animate());
-
-    this.tooth.strip.interactive = true;
-    this.tooth.strip.buttonMode = true;
-    this.tooth.strip.on('pointerdown', () => this.onClick());
-  }
-
-  onClick() {
-    this.tooth.triggerVibration();
-  }
-
-  animate() {
-    this.tooth.render();
+    this.app.ticker.add(() => this.tooth.render());
   }
 }
 

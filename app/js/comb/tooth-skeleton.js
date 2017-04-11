@@ -1,9 +1,21 @@
-import { Graphics } from 'pixi.js';
+import { Point, Graphics } from 'pixi.js';
+
+class PointsFactory {
+  static createPoints(number, length) {
+    const points = [];
+
+    for (let i = 0; i < number; i += 1) {
+      points.push(new Point(0, i * length));
+    }
+
+    return points;
+  }
+}
 
 class ToothSkeleton {
-  constructor(points) {
+  constructor(number, length) {
     this.graphics = new Graphics();
-    this.points = points;
+    this.points = PointsFactory.createPoints(number, length);
   }
 
   render() {
@@ -19,7 +31,7 @@ class ToothSkeleton {
 
     for (let i = 1; i < this.points.length; i += 1) {
       g.beginFill(0xff0022);
-      g.drawCircle(this.points[i].x, this.points[i].y, 10);
+      g.drawCircle(this.points[i].x, this.points[i].y, 5);
       g.endFill();
     }
   }
