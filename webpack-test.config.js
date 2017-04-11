@@ -1,13 +1,15 @@
 // Tribute to https://blog.threatstack.com/unit-testing-with-webpack-mocha
 
-var webpack = require('webpack');
-var nodeExternals = require('webpack-node-externals');
-var WebpackShellPlugin = require('webpack-shell-plugin');
+const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const WebpackShellPlugin = require('webpack-shell-plugin');
+const path = require('path');
 
 module.exports = {
   entry: './app/js/index.spec.js',
   output: {
     filename: 'test-bundle.js',
+    path: path.resolve(__dirname, 'dist_test')
   },
   target: 'node',
   externals: [nodeExternals()],
@@ -33,7 +35,7 @@ module.exports = {
   },
   plugins: [
     new WebpackShellPlugin({
-      onBuildExit: "mocha -R nyan -c test-bundle.js"
+      onBuildExit: 'mocha -R nyan -c ' + path.resolve(__dirname, 'dist_test/test-bundle.js')
     })
   ]
 };

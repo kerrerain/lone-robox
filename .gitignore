@@ -1,3 +1,4 @@
 dist/
+dist_test/
 node_modules/
 npm-debug.log
