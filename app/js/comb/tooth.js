@@ -7,17 +7,17 @@ class Tooth {
     this.constructor.checkOptions(options);
 
     this.options = options;
-    this.skeleton = new ToothSkeleton(options.points, options.length);
-    this.strip = new mesh.Rope(Texture.fromImage(options.image), this.skeleton.points);
-    this.oscillator = new Oscillator(options.oscillator);
+    this.skeleton = new ToothSkeleton(options.tooth.points, options.tooth.length);
+    this.strip = new mesh.Rope(Texture.fromImage(options.tooth.image), this.skeleton.points);
+    this.oscillator = new Oscillator(options);
 
-    if (options.clickable) {
+    if (options.tooth.clickable) {
       this.activateClick();
     }
   }
 
   static checkOptions(options) {
-    if (!options.image) {
+    if (!options.tooth.image) {
       throw new Error('The image is missing.');
     }
   }
@@ -25,7 +25,7 @@ class Tooth {
   addToContainer(container) {
     container.addChild(this.strip);
 
-    if (this.options.displayPoints) {
+    if (this.options.tooth.displayPoints) {
       container.addChild(this.skeleton.graphics);
     }
   }
@@ -39,7 +39,11 @@ class Tooth {
   activateClick() {
     this.strip.interactive = true;
     this.strip.buttonMode = true;
-    this.strip.on('pointerdown', () => this.oscillator.triggerVibration());
+    this.strip.on('pointerdown', () => this.triggerVibration());
+  }
+
+  triggerVibration() {
+    this.oscillator.triggerVibration();
   }
 
   render() {

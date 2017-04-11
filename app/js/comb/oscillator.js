@@ -1,6 +1,6 @@
 class Oscillator {
   constructor(options) {
-    this.options = options;
+    this.options = options.oscillator;
     this.position = 0;
     this.vibrating = false;
     this.timeOfVibration = 0;

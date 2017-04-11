@@ -1,5 +1,5 @@
-import DemoVibrate from './demos/vibrate';
+import DemoBox from './demos/box';
 
-const demo = new DemoVibrate();
+const demo = new DemoBox();
 
 document.body.appendChild(demo.app.view);

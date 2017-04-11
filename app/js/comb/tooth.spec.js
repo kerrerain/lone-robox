@@ -22,7 +22,9 @@ describe('Tooth', () => {
 
   it('should complain if the image is not set in the options', () => {
     // Arrange
-    const options = {};
+    const options = {
+      tooth: {},
+    };
 
     // Act
     const fn = () => {
