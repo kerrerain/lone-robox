@@ -4,9 +4,10 @@
   "description": "",
   "main": "app/js/index.js",
   "scripts": {
-    "test": "mocha -R nyan -c app/**/*.spec.js",
     "build": "webpack",
-    "serve": "webpack-dev-server --open"
+    "serve": "webpack-dev-server --open",
+    "test": "webpack --config webpack-test.config.js",
+    "test-serve": "webpack -w --config webpack-test.config.js"
   },
   "keywords": [],
   "author": "magleff",
@@ -24,7 +25,9 @@
     "html-webpack-plugin": "^2.28.0",
     "mocha": "^3.2.0",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-node-externals": "^1.5.4",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
     "pixi.js": "^4.4.4"
