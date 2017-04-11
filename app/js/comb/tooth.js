@@ -4,14 +4,21 @@ import Oscillator from './oscillator';
 
 class Tooth {
   constructor(options) {
-    // TODO @magleff Check mandatory options, write a test
+    this.constructor.checkOptions(options);
+
     this.options = options;
     this.skeleton = new ToothSkeleton(options.points, options.length);
-    this.strip = new mesh.Rope(Texture.fromImage('assets/images/dummy-tooth-rotate.png'), this.skeleton.points);
+    this.strip = new mesh.Rope(Texture.fromImage(options.image), this.skeleton.points);
     this.oscillator = new Oscillator(options.oscillator);
 
     if (options.clickable) {
       this.activateClick();
+    }
+  }
+
+  static checkOptions(options) {
+    if (!options.image) {
+      throw new Error('The image is missing.');
     }
   }
 

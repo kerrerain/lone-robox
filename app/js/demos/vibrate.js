@@ -6,6 +6,7 @@ const GLOBAL_OPTIONS = {
   length: 80,
   displayPoints: false,
   clickable: true,
+  image: 'assets/images/dummy-tooth-rotate.png',
   oscillator: {
     gamma: 0.02,
     omega1: 15,
