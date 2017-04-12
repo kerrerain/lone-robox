@@ -1,4 +1,4 @@
-import { mesh, Texture } from 'pixi.js';
+import { mesh, loader } from 'pixi.js';
 import ToothSkeleton from './tooth-skeleton';
 import Oscillator from './oscillator';
 
@@ -8,7 +8,7 @@ class Tooth {
 
     this.options = options;
     this.skeleton = new ToothSkeleton(options.tooth.points, options.tooth.length);
-    this.strip = new mesh.Rope(Texture.fromImage(options.tooth.image), this.skeleton.points);
+    this.strip = new mesh.Rope(loader.resources.tooth.texture, this.skeleton.points);
     this.oscillator = new Oscillator(options);
 
     if (options.tooth.clickable) {
@@ -34,6 +34,14 @@ class Tooth {
     this.strip.x = x;
     this.strip.y = y;
     this.skeleton.position(x, y);
+  }
+
+  scale(factor) {
+    this.strip.scale.set(factor);
+  }
+
+  setWidth(width) {
+    this.strip.width = width;
   }
 
   activateClick() {

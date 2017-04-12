@@ -1,19 +1,20 @@
 export default {
-  scale: 1,
   comb: {
-    teeth: 5,
+    teeth: 10,
+    scale: 0.5,
+    image: 'assets/images/dummy-head.png',
   },
   tooth: {
-    points: 5,
-    length: 80,
+    points: 6,
+    length: 120,
     displayPoints: false,
     clickable: true,
     image: 'assets/images/dummy-tooth-rotate.png',
   },
   oscillator: {
-    gamma: 0.02,
-    omega1: 15,
-    amplitude: 3,
+    gamma: 0.05,
+    omega1: 5,
+    amplitude: 5,
     timeOfVibrationEnd: 100,
   },
 };

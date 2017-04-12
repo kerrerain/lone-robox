@@ -10,10 +10,11 @@ class Box {
     const options = Object.assign(defaultOptions, {
       comb: {
         teeth: notesToDisplay.length,
+        scale: defaultOptions.comb.scale,
       },
     });
 
-    this.comb = new Comb(options, notesToDisplay);
+    this.comb = new Comb(options);
 
     this.sequencer = new Sequencer();
     this.sequencer.load(score);

@@ -1,5 +1,5 @@
-import DemoBox from './demos/box';
+import Demo from './demos/box';
 
-const demo = new DemoBox();
+const demo = new Demo();
 
 document.body.appendChild(demo.app.view);
