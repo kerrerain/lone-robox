@@ -17,4 +17,15 @@ export default {
     amplitude: 5,
     timeOfVibrationEnd: 100,
   },
+  cylinder: {
+    scale: 0.8,
+    rotationSpeed: 0.01,
+    image: 'assets/images/dummy-cylinder.png',
+  },
+  pin: {
+    image: 'assets/images/dummy-pins-sprite.png',
+    frames: 5,
+    frameWidth: 20,
+    frameHeight: 20,
+  },
 };

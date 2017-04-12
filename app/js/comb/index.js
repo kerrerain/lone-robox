@@ -35,7 +35,7 @@ class Comb {
   }
 
   positionTeethContainer(x, y) {
-    this.teethContainer.position.set(x - (this.sprite.width / 3), y);
+    this.teethContainer.position.set(x - (this.sprite.width / 2.9), y);
     this.teeth.forEach((tooth, index) => {
       tooth.position((index * tooth.strip.width), 0);
     });
