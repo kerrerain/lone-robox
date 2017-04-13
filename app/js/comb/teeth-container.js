@@ -1,0 +1,44 @@
+import { Container } from 'pixi.js';
+import Tooth from './tooth';
+
+class TeethContainer {
+  constructor(options, width, height) {
+    this.options = options;
+    this.width = width;
+    this.height = height;
+    this.container = new Container();
+    this.teeth = [];
+
+    for (let i = 0; i < options.comb.teeth; i += 1) {
+      const tooth = new Tooth(options);
+      this.teeth.push(tooth);
+      tooth.addToContainer(this.container);
+    }
+  }
+
+  position(x, y) {
+    this.container.position.set(x, y);
+    this.teeth.forEach((tooth, index) => {
+      tooth.position((index * tooth.strip.width), 0);
+    });
+  }
+
+  size(width) {
+    this.teeth.forEach((tooth) => {
+      tooth.scale(this.options.comb.scale);
+      tooth.setWidth(width / this.options.comb.teeth);
+    });
+  }
+
+  triggerAnimation(index) {
+    this.teeth[index].triggerVibration();
+  }
+
+  render() {
+    this.teeth.forEach((tooth) => {
+      tooth.render();
+    });
+  }
+}
+
+export default TeethContainer;

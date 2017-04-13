@@ -12,6 +12,9 @@ class Box {
       comb: {
         teeth: notesToDisplay.length,
         scale: defaultOptions.comb.scale,
+        teethOffsetXLeft: defaultOptions.comb.teethOffsetXLeft,
+        teethOffsetXRight: defaultOptions.comb.teethOffsetXRight,
+        teethOffsetYTop: defaultOptions.comb.teethOffsetYTop,
       },
     });
 
