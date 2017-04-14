@@ -2,10 +2,8 @@ import { Container } from 'pixi.js';
 import Tooth from './tooth';
 
 class TeethContainer {
-  constructor(options, width, height) {
+  constructor(options) {
     this.options = options;
-    this.width = width;
-    this.height = height;
     this.container = new Container();
     this.teeth = [];
 
@@ -25,7 +23,6 @@ class TeethContainer {
 
   size(width) {
     this.teeth.forEach((tooth) => {
-      tooth.scale(this.options.comb.scale);
       tooth.setWidth(width / this.options.comb.teeth);
     });
   }

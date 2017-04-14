@@ -6,8 +6,11 @@ class Tooth {
   constructor(options) {
     this.constructor.checkOptions(options);
 
+    const totalLength = loader.resources.tooth.texture.width * options.tooth.scale;
+    const pointLength = totalLength / (options.tooth.points - 1);
+
     this.options = options;
-    this.skeleton = new ToothSkeleton(options.tooth.points, options.tooth.length);
+    this.skeleton = new ToothSkeleton(options.tooth.points, pointLength);
     this.strip = new mesh.Rope(loader.resources.tooth.texture, this.skeleton.points);
     this.oscillator = new Oscillator(options);
 
@@ -34,6 +37,18 @@ class Tooth {
     this.strip.x = x;
     this.strip.y = y;
     this.skeleton.position(x, y);
+  }
+
+  positionX() {
+    return this.strip.x;
+  }
+
+  width() {
+    return this.strip.width;
+  }
+
+  height() {
+    return this.strip.height;
   }
 
   scale(factor) {

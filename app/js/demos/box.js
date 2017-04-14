@@ -11,7 +11,7 @@ class DemoBox {
 
   setup() {
     this.box = new Box(DEFAULT_OPTIONS);
-    this.box.position(this.app.renderer.width / 2, this.app.renderer.height / 4);
+    this.box.position(this.app.renderer.width / 4, 0);
     this.box.addToContainer(this.app.stage);
 
     this.app.ticker.add(() => this.box.render());

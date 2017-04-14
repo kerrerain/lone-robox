@@ -40,7 +40,7 @@ class ToothSkeleton {
       g.lineTo(this.points[i].x, this.points[i].y);
     }
 
-    for (let i = 1; i < this.points.length; i += 1) {
+    for (let i = 0; i < this.points.length; i += 1) {
       g.beginFill(0xff0022);
       g.drawCircle(this.points[i].x, this.points[i].y, 5);
       g.endFill();
