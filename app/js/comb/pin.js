@@ -32,12 +32,10 @@ class Pin {
   rotate(rotation) {
     this.angle += rotation;
     this.updatePosition();
-    this.updateTexture(PinFrame.currentFrameIndex(this.angle, this.options.pin.frames));
+    this.updateTexture(PinFrame.currentFrameTableIndex(this.angle, this.options.pin.framesTable));
   }
 
   updatePosition() {
-    // const y = ((0.5 * this.originHeight) * (1 - Math.cos(this.angle))) -
-    //   (this.options.pin.frameHeight / 2);
     const y = (0.5 * this.originHeight) * (1 - Math.cos(this.angle));
     this.sprite.position.set(this.originX, y);
   }

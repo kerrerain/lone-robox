@@ -13,9 +13,10 @@ class PointsFactory {
 }
 
 class ToothSkeleton {
-  constructor(number, length) {
+  constructor(number, length, twistFactor) {
     this.graphics = new Graphics();
     this.points = PointsFactory.create(number, length);
+    this.twistFactor = twistFactor;
   }
 
   position(x, y) {
@@ -25,7 +26,7 @@ class ToothSkeleton {
 
   pointsPositionX(x) {
     for (let i = 0; i < this.points.length; i += 1) {
-      this.points[i].x = i * x;
+      this.points[i].x = ((i ** this.twistFactor) / this.points.length) * x;
     }
   }
 

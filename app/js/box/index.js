@@ -30,7 +30,7 @@ class Box {
     this.container = new Container();
     this.comb.addToContainer(this.container);
 
-    // this.sequencer.play();
+    this.sequencer.play();
   }
 
   addToContainer(container) {

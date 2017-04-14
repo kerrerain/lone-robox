@@ -28,7 +28,7 @@ class TeethContainer {
   }
 
   triggerAnimation(index) {
-    this.teeth[index].triggerVibration();
+    this.teeth[index].triggerAnimation();
   }
 
   render() {

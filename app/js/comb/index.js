@@ -15,9 +15,9 @@ class Comb {
     this.pinsContainer = this.createPinsContainer();
 
     this.container = new Container();
-    this.container.addChild(this.teethContainer.container);
     this.container.addChild(this.cylinder.container);
     this.container.addChild(this.pinsContainer.container);
+    this.container.addChild(this.teethContainer.container);
     this.container.addChild(this.sprite);
   }
 
