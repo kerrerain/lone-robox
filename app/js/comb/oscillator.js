@@ -11,6 +11,10 @@ class Oscillator {
     this.timeOfVibration = 0;
   }
 
+  onVibrationEnd(cb) {
+    this.vibrationEndCallback = cb;
+  }
+
   run(time) {
     if (this.vibrating) {
       this.timeOfVibration += time;
@@ -21,6 +25,10 @@ class Oscillator {
       this.vibrating = false;
       this.timeOfVibration = 0;
       this.position = 0;
+
+      if (this.vibrationEndCallback) {
+        this.vibrationEndCallback();
+      }
     }
 
     return this.position;

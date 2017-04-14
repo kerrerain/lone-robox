@@ -13,6 +13,7 @@ class Tooth {
     this.skeleton = new ToothSkeleton(options.tooth.points, pointLength);
     this.strip = new mesh.Rope(loader.resources.tooth.texture, this.skeleton.points);
     this.oscillator = new Oscillator(options);
+    this.oscillator.onVibrationEnd(() => this.onVibrationEnd());
 
     if (options.tooth.clickable) {
       this.activateClick();
@@ -67,6 +68,11 @@ class Tooth {
 
   triggerVibration() {
     this.oscillator.triggerVibration();
+    this.strip.texture = loader.resources.toothActive.texture;
+  }
+
+  onVibrationEnd() {
+    this.strip.texture = loader.resources.tooth.texture;
   }
 
   render() {

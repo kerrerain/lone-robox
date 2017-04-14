@@ -14,12 +14,13 @@ export default {
     clickable: true,
     vibrationDecay: 600,
     image: 'assets/images/dummy-tooth-rotate.png',
+    imageActive: 'assets/images/dummy-tooth-rotate-active.png',
   },
   oscillator: {
     gamma: 0.05,
-    omega1: 5,
-    amplitude: 5,
-    timeOfVibrationEnd: 100,
+    omega1: 2,
+    amplitude: 10,
+    timeOfVibrationEnd: 50,
   },
   cylinder: {
     scale: 0.8,
