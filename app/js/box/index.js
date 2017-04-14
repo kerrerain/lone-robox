@@ -1,4 +1,5 @@
 import { Container } from 'pixi.js';
+import _ from 'lodash';
 import notes from './notes';
 import score from '../../assets/scores/melody';
 import Sequencer from '../sequencer';
@@ -8,13 +9,9 @@ class Box {
   constructor(defaultOptions) {
     // Analysis of the score to find how many notes should be displayed
     const notesToDisplay = notes(score);
-    const options = Object.assign(defaultOptions, {
+    const options = _.merge(defaultOptions, {
       comb: {
         teeth: notesToDisplay.length,
-        scale: defaultOptions.comb.scale,
-        teethOffsetXLeft: defaultOptions.comb.teethOffsetXLeft,
-        teethOffsetXRight: defaultOptions.comb.teethOffsetXRight,
-        teethOffsetYTop: defaultOptions.comb.teethOffsetYTop,
       },
     });
 
