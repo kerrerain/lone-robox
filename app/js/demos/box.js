@@ -1,6 +1,6 @@
 import { Application } from 'pixi.js';
 import Box from '../box';
-import OPTIONS from '../custom-boxes/nyan';
+import OPTIONS from '../custom-boxes/flat';
 import AssetsLoader from '../assets-loader';
 import ToggleButton from '../gui/toggle-button';
 
