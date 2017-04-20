@@ -27,8 +27,8 @@ class TeethContainer {
     });
   }
 
-  triggerAnimation(index) {
-    this.teeth[index].triggerAnimation();
+  triggerAnimation(index, cb) {
+    this.teeth[index].triggerAnimation(cb);
   }
 
   render() {

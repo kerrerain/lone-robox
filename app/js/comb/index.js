@@ -63,8 +63,8 @@ class Comb {
     container.addChild(this.container);
   }
 
-  triggerAnimation(index) {
-    this.teethContainer.triggerAnimation(index);
+  triggerAnimation(index, cb) {
+    this.teethContainer.triggerAnimation(index, cb);
     this.pinsContainer.triggerAnimation(index);
   }
 

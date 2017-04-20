@@ -9,7 +9,7 @@ const notes = (score) => {
   const notesSet = {};
 
   score.forEach((note) => {
-    notesSet[note.n] = true;
+    notesSet[note.name] = true;
   });
 
   return Object

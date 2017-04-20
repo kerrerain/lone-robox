@@ -32,6 +32,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "pixi.js": "^4.4.4"
+    "midiconvert": "^0.4.1",
+    "pixi.js": "^4.4.4",
+    "tone": "^0.10.0"
   }
 }

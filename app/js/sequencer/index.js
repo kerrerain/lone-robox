@@ -1,62 +1,55 @@
+import MidiConvert from 'midiconvert';
+import Tone from 'tone';
+
 class Sequencer {
   constructor() {
-    this.score = [];
-    this.scoreIndex = 0;
-    this.tempo = 80;
-    this.tic = 400; // (60 / this.tempo) / 4; 16th
-    this.playing = false;
-    this.loop = true;
-    this.noteEventCallbacks = [];
-  }
-
-  load(score) {
-    this.score = score;
-    this.scoreIndex = 0;
-  }
-
-  play() {
-    if (!this.playing) {
-      this.playing = true;
-      this.scoreIndex = 0;
-      this.playNextNote();
-    }
-  }
-
-  stop() {
-    this.scoreIndex = 0;
-    this.playing = false;
-  }
-
-  playNextNote() {
-    if (this.scoreIndex >= this.score.length) {
-      this.scoreIndex = 0;
-
-      if (!this.loop) {
-        this.playing = false;
-        return;
-      }
-    }
-
-    const note = this.score[this.scoreIndex];
-
-    window.setTimeout(() => {
-      if (this.playing) {
-        this.dispatchNoteEvent(note);
-        this.playNextNote();
-      }
-    }, note.t * this.tic);
-
-    this.scoreIndex += 1;
-  }
-
-  dispatchNoteEvent(note) {
-    this.noteEventCallbacks.forEach((cb) => {
-      cb(note);
-    });
+    this.part = null;
+    this.file = null;
+    this.transport = Tone.Transport;
+    this.onNoteEventCallbacks = [];
   }
 
   onNoteEvent(cb) {
-    this.noteEventCallbacks.push(cb);
+    this.onNoteEventCallbacks.push(cb);
+  }
+
+  loadFile(path) {
+    return new Promise((resolve) => {
+      MidiConvert.load(path, (midi) => {
+        this.midi = midi;
+
+        this.part = new Tone.Part((time, note) => {
+          this.triggerCallbacks(time, note);
+        }, this.notes());
+
+        this.part.start();
+
+        this.transport.bpm.value = this.midi.header.bpm;
+        this.transport.loop = true;
+        this.transport.loopStart = this.midi.startTime;
+        this.transport.loopEnd = this.midi.startTime + this.midi.duration;
+
+        resolve();
+      });
+    });
+  }
+
+  notes() {
+    return this.midi.tracks[0].notes;
+  }
+
+  start() {
+    this.transport.start();
+  }
+
+  stop() {
+    this.transport.stop();
+  }
+
+  triggerCallbacks(time, note) {
+    this.onNoteEventCallbacks.forEach((cb) => {
+      cb(time, note);
+    });
   }
 }
 

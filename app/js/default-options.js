@@ -36,4 +36,15 @@ export default {
     frameWidth: 20,
     frameHeight: 20,
   },
+  sequencer: {
+    file: 'assets/scores/test.mid',
+  },
+  buttons: {
+    play: {
+      image: 'assets/images/button-play.png',
+    },
+    stop: {
+      image: 'assets/images/button-stop.png',
+    },
+  },
 };

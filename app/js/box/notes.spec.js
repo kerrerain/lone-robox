@@ -5,15 +5,15 @@ describe('Notes', () => {
   it('should gather the whole set of notes used in a score, and sort them', () => {
     // Arrange
     const score = [{
-      n: 'E4',
+      name: 'E4',
     }, {
-      n: 'G#5',
+      name: 'G#5',
     }, {
-      n: 'E4',
+      name: 'E4',
     }, {
-      n: 'G5',
+      name: 'G5',
     }, {
-      n: 'D3',
+      name: 'D3',
     }];
 
     // Act

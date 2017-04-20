@@ -68,7 +68,7 @@ class Tooth {
     this.strip.on('pointerdown', () => this.triggerVibration());
   }
 
-  triggerAnimation() {
+  triggerAnimation(cb) {
     const interval = window.setInterval(() => {
       this.offsetX += 0.1;
     }, 10);
@@ -76,6 +76,7 @@ class Tooth {
     window.setTimeout(() => {
       this.triggerVibration();
       this.offsetX = 0;
+      cb();
       window.clearInterval(interval);
     }, this.options.tooth.vibrationDecay);
   }

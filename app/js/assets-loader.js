@@ -7,6 +7,8 @@ class AssetsLoader {
     loader.add('toothActive', options.tooth.imageActive);
     loader.add('cylinder', options.cylinder.image);
     loader.add('pin', options.pin.image);
+    loader.add('buttonPlay', options.buttons.play.image);
+    loader.add('buttonStop', options.buttons.stop.image);
     loader.load(cb);
   }
 }
