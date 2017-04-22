@@ -27,13 +27,23 @@ class TeethContainer {
     });
   }
 
-  triggerAnimation(index, cb) {
-    this.teeth[index].triggerAnimation(cb);
+  triggerAnimation(index) {
+    this.teeth[index].triggerAnimation();
+  }
+
+  triggerVibration(index) {
+    this.teeth[index].triggerVibration();
   }
 
   render() {
     this.teeth.forEach((tooth) => {
       tooth.render();
+    });
+  }
+
+  reset() {
+    this.teeth.forEach((tooth) => {
+      tooth.reset();
     });
   }
 }

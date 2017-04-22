@@ -7,14 +7,26 @@ import Comb from '../comb';
 
 class Box {
   constructor(options, cb) {
-    this.synth = new Synth();
+    this.synth = new Synth(options);
 
-    this.sequencer = new Sequencer();
+    this.sequencer = new Sequencer(options);
+    /*    this.sequencer.onNoteEvent((time, note) => {
+          this.comb.triggerAnimation(index);
+          this.sequencer.schedule(() => {
+            this.comb.stopAnimation(index);
+            this.synth.playNote(time, note);
+          }, options.tooth.vibrationDecay);
+        }); */
+
     this.sequencer.onNoteEvent((time, note) => {
       const index = this.notesToDisplay.indexOf(note.name);
-      this.comb.triggerAnimation(index, () => {
-        this.synth.playNote(time, note);
-      });
+
+      this.comb.triggerAnimation(index);
+
+      this.sequencer.schedule((timeAhead) => {
+        this.comb.triggerVibration(index);
+        this.synth.playNote(timeAhead, note);
+      }, `+${options.tooth.vibrationDecay}`);
     });
 
     this.sequencer.loadFile(options.sequencer.file).then(() => {
@@ -48,11 +60,18 @@ class Box {
   }
 
   start() {
+    this.comb.start();
     this.sequencer.start();
   }
 
   stop() {
+    this.comb.reset();
     this.sequencer.stop();
+  }
+
+  pause() {
+    this.comb.pause();
+    this.sequencer.pause();
   }
 }
 

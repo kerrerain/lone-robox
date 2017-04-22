@@ -1,8 +1,9 @@
 import { Application } from 'pixi.js';
 import Box from '../box';
-import OPTIONS from '../custom-boxes/flat';
+import OPTIONS from '../custom-boxes/nyan';
 import AssetsLoader from '../assets-loader';
 import ToggleButton from '../gui/toggle-button';
+import Button from '../gui/button';
 
 class DemoBox {
   constructor() {
@@ -16,16 +17,24 @@ class DemoBox {
       this.box.addToContainer(this.app.stage);
       this.app.ticker.add(() => this.box.render());
 
-      const button = new ToggleButton('buttonPlay', 'buttonStop');
-      button.onClick((toggle) => {
+      const playButton = new ToggleButton('buttonPlay', 'buttonPause');
+      playButton.onClick((toggle) => {
         if (toggle) {
           this.box.start();
         } else {
-          this.box.stop();
+          this.box.pause();
         }
       });
-      button.position(this.app.renderer.width / 1.5, 40);
-      button.addToContainer(this.app.stage);
+      playButton.position(this.app.renderer.width / 1.5, 40);
+      playButton.addToContainer(this.app.stage);
+
+      const buttonStop = new Button('buttonStop');
+      buttonStop.onClick(() => {
+        this.box.stop();
+        playButton.reset();
+      });
+      buttonStop.position(this.app.renderer.width / 1.5, 120);
+      buttonStop.addToContainer(this.app.stage);
     });
   }
 }

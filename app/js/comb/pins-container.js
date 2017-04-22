@@ -32,14 +32,23 @@ class PinsContainer {
   }
 
   render() {
+    let pinsToRemove = 0;
+
     this.pinsBuffer.forEach((pin) => {
       pin.rotate(this.options.cylinder.rotationSpeed);
 
       if (pin.angle > Math.PI) {
         this.container.removeChildAt(0);
-        this.pinsBuffer = this.pinsBuffer.slice(1, this.container.children.length);
+        pinsToRemove += 1;
       }
     });
+
+    this.pinsBuffer = this.pinsBuffer.slice(pinsToRemove, this.pinsBuffer.length);
+  }
+
+  reset() {
+    this.container.removeChildren();
+    this.pinsBuffer = [];
   }
 }
 

@@ -16,6 +16,7 @@ class Tooth {
     this.oscillator = new Oscillator(options);
     this.oscillator.onVibrationEnd(() => this.onVibrationEnd());
     this.offsetX = 0;
+    this.twisted = false;
 
     if (options.tooth.clickable) {
       this.activateClick();
@@ -68,20 +69,13 @@ class Tooth {
     this.strip.on('pointerdown', () => this.triggerVibration());
   }
 
-  triggerAnimation(cb) {
-    const interval = window.setInterval(() => {
-      this.offsetX += 0.1;
-    }, 10);
-
-    window.setTimeout(() => {
-      this.triggerVibration();
-      this.offsetX = 0;
-      cb();
-      window.clearInterval(interval);
-    }, this.options.tooth.vibrationDecay);
+  triggerAnimation() {
+    this.twisted = true;
   }
 
   triggerVibration() {
+    this.twisted = false;
+    this.offsetX = 0;
     this.oscillator.triggerVibration();
     this.strip.texture = loader.resources.toothActive.texture;
   }
@@ -91,9 +85,23 @@ class Tooth {
   }
 
   render() {
+    if (this.twisted && this.offsetX < 10) {
+      this.offsetX += 0.1;
+    }
+    this.renderSkeleton();
+  }
+
+  renderSkeleton() {
     const x = this.oscillator.run(1);
     this.skeleton.pointsPositionX(x - this.offsetX);
     this.skeleton.render();
+  }
+
+  reset() {
+    this.oscillator.reset();
+    this.twisted = false;
+    this.offsetX = 0;
+    this.renderSkeleton();
   }
 }
 

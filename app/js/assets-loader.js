@@ -9,6 +9,7 @@ class AssetsLoader {
     loader.add('pin', options.pin.image);
     loader.add('buttonPlay', options.buttons.play.image);
     loader.add('buttonStop', options.buttons.stop.image);
+    loader.add('buttonPause', options.buttons.pause.image);
     loader.load(cb);
   }
 }

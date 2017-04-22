@@ -22,13 +22,7 @@ class Oscillator {
     }
 
     if (this.timeOfVibration > this.options.timeOfVibrationEnd) {
-      this.vibrating = false;
-      this.timeOfVibration = 0;
-      this.position = 0;
-
-      if (this.vibrationEndCallback) {
-        this.vibrationEndCallback();
-      }
+      this.reset();
     }
 
     return this.position;
@@ -39,6 +33,16 @@ class Oscillator {
     return Math.exp(-this.options.gamma * t) *
       this.options.amplitude *
       Math.cos(this.options.omega1 * t);
+  }
+
+  reset() {
+    this.vibrating = false;
+    this.timeOfVibration = 0;
+    this.position = 0;
+
+    if (this.vibrationEndCallback) {
+      this.vibrationEndCallback();
+    }
   }
 }
 

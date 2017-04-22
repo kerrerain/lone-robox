@@ -13,7 +13,8 @@ export default {
     scale: 0.4,
     displayPoints: false,
     clickable: true,
-    vibrationDecay: 1000,
+    vibrationDecay: 0.8,
+    vibrationEnd: 0.3,
     image: 'assets/images/dummy-tooth-rotate.png',
     imageActive: 'assets/images/dummy-tooth-rotate-active.png',
   },
@@ -26,7 +27,7 @@ export default {
   cylinder: {
     scale: 0.8,
     offsetYTop: -0.04,
-    rotationSpeed: 0.0075,
+    rotationSpeed: 0.01,
     image: 'assets/images/dummy-cylinder.png',
   },
   pin: {
@@ -37,7 +38,7 @@ export default {
     frameHeight: 20,
   },
   sequencer: {
-    file: 'assets/scores/test.mid',
+    file: 'assets/scores/ctsad.mid',
   },
   buttons: {
     play: {
@@ -45,6 +46,9 @@ export default {
     },
     stop: {
       image: 'assets/images/button-stop.png',
+    },
+    pause: {
+      image: 'assets/images/button-pause.png',
     },
   },
 };

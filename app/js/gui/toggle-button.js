@@ -34,6 +34,11 @@ class ToggleButton {
   addToContainer(container) {
     container.addChild(this.button);
   }
+
+  reset() {
+    this.toggle = false;
+    this.button.texture = this.currentTexture();
+  }
 }
 
 export default ToggleButton;

@@ -6,6 +6,7 @@ import Cylinder from './cylinder';
 class Comb {
   constructor(options) {
     this.options = options;
+    this.running = false;
 
     this.sprite = new Sprite(loader.resources.comb.texture);
     this.sprite.scale.set(options.comb.scale);
@@ -63,14 +64,33 @@ class Comb {
     container.addChild(this.container);
   }
 
-  triggerAnimation(index, cb) {
-    this.teethContainer.triggerAnimation(index, cb);
+  triggerAnimation(index) {
+    this.teethContainer.triggerAnimation(index);
     this.pinsContainer.triggerAnimation(index);
   }
 
+  triggerVibration(index) {
+    this.teethContainer.triggerVibration(index);
+  }
+
   render() {
-    this.teethContainer.render();
-    this.pinsContainer.render();
+    if (this.running) {
+      this.pinsContainer.render();
+      this.teethContainer.render();
+    }
+  }
+
+  start() {
+    this.running = true;
+  }
+
+  pause() {
+    this.running = false;
+  }
+
+  reset() {
+    this.teethContainer.reset();
+    this.pinsContainer.reset();
   }
 }
 
