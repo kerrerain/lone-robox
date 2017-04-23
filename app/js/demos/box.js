@@ -1,6 +1,6 @@
 import { Application } from 'pixi.js';
 import Box from '../box';
-import OPTIONS from '../custom-boxes/nyan';
+import OPTIONS from '../custom-boxes/pink-panther';
 import AssetsLoader from '../assets-loader';
 import ToggleButton from '../gui/toggle-button';
 import Button from '../gui/button';
@@ -8,6 +8,11 @@ import Button from '../gui/button';
 class DemoBox {
   constructor() {
     this.app = new Application(800, 600, { backgroundColor: 0xffffff });
+    this.app.renderer.view.style.position = 'absolute';
+    this.app.renderer.view.style.display = 'block';
+    this.app.renderer.autoResize = true;
+    this.app.renderer.resize(window.innerWidth, window.innerHeight);
+
     AssetsLoader.load(OPTIONS, () => this.setup());
   }
 
@@ -25,7 +30,7 @@ class DemoBox {
           this.box.pause();
         }
       });
-      playButton.position(this.app.renderer.width / 1.5, 40);
+      playButton.position(200, 40);
       playButton.addToContainer(this.app.stage);
 
       const buttonStop = new Button('buttonStop');
@@ -33,7 +38,7 @@ class DemoBox {
         this.box.stop();
         playButton.reset();
       });
-      buttonStop.position(this.app.renderer.width / 1.5, 120);
+      buttonStop.position(200, 120);
       buttonStop.addToContainer(this.app.stage);
     });
   }

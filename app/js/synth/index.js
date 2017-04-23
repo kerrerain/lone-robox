@@ -3,17 +3,28 @@ import Tone from 'tone';
 class Synth {
   constructor(options) {
     this.options = options;
-    this.synth = new Tone.PolySynth(8, Tone.Synth).toMaster();
-    this.synth.set('oscillator', 'sine');
+
+    this.synth = new Tone.PolySynth(8, Tone.FMSynth).toMaster();
     this.synth.set({
+      harmonicity: 8,
+      modulationIndex: 2,
       oscillator: {
         type: 'sine',
       },
       envelope: {
-        attack: 0.01,
-        decay: 0.1,
+        attack: 0.001,
+        decay: 2,
         sustain: 0.1,
-        release: 1.2,
+        release: 2,
+      },
+      modulation: {
+        type: 'square',
+      },
+      modulationEnvelope: {
+        attack: 0.002,
+        decay: 0.2,
+        sustain: 0,
+        release: 0.7,
       },
     });
   }
