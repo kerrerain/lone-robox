@@ -10,14 +10,6 @@ class Box {
     this.synth = new Synth(options);
 
     this.sequencer = new Sequencer(options);
-    /*    this.sequencer.onNoteEvent((time, note) => {
-          this.comb.triggerAnimation(index);
-          this.sequencer.schedule(() => {
-            this.comb.stopAnimation(index);
-            this.synth.playNote(time, note);
-          }, options.tooth.vibrationDecay);
-        }); */
-
     this.sequencer.onNoteEvent((time, note) => {
       const index = this.notesToDisplay.indexOf(note.name);
 

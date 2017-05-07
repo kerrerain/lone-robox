@@ -40,6 +40,10 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'app/assets',
       to: 'assets'
-    }])
+    }]),
+    new CopyWebpackPlugin([{
+      from: 'app/css',
+      to: 'css'
+    }]),
   ]
 };
