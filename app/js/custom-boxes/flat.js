@@ -2,6 +2,7 @@ import _ from 'lodash';
 import DEFAULT_OPTIONS from '../default-options';
 
 const customOptions = {
+  label: 'Flat',
   comb: {
     teethOffsetXLeft: 0.15,
     teethOffsetXRight: 0.2,
@@ -21,4 +22,4 @@ const customOptions = {
   },
 };
 
-export default _.merge(DEFAULT_OPTIONS, customOptions);
+export default _.merge({}, DEFAULT_OPTIONS, customOptions);

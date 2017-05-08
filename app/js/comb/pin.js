@@ -10,7 +10,7 @@ class Pin {
     this.originHeight = height;
 
     for (let i = 0; i < options.pin.frames; i += 1) {
-      this.frames.push(new Texture(loader.resources.pin.texture,
+      this.frames.push(new Texture(loader.resources[`${options.id}-pin`].texture,
         new Rectangle(i * this.options.pin.frameWidth,
           0, this.options.pin.frameWidth, this.options.pin.frameHeight)));
     }

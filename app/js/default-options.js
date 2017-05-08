@@ -1,4 +1,5 @@
 export default {
+  id: 'dummy',
   comb: {
     teeth: 10,
     teethOffsetXLeft: 0.15,
@@ -39,16 +40,5 @@ export default {
   },
   sequencer: {
     file: 'assets/scores/ctsad.mid',
-  },
-  buttons: {
-    play: {
-      image: 'assets/images/button-play.png',
-    },
-    stop: {
-      image: 'assets/images/button-stop.png',
-    },
-    pause: {
-      image: 'assets/images/button-pause.png',
-    },
   },
 };

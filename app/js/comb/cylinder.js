@@ -4,7 +4,7 @@ class Cylinder {
   constructor(options) {
     this.options = options;
 
-    this.sprite = new Sprite(loader.resources.cylinder.texture);
+    this.sprite = new Sprite(loader.resources[`${options.id}-cylinder`].texture);
     this.sprite.scale.set(options.cylinder.scale);
 
     this.container = new Container();

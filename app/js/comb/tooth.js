@@ -6,13 +6,13 @@ class Tooth {
   constructor(options) {
     this.constructor.checkOptions(options);
 
-    const totalLength = loader.resources.tooth.texture.width * options.tooth.scale;
+    const totalLength = loader.resources[`${options.id}-tooth`].texture.width * options.tooth.scale;
     const pointLength = totalLength / (options.tooth.points - 1);
 
     this.options = options;
     this.skeleton = new ToothSkeleton(options.tooth.points,
       pointLength, this.options.tooth.twistFactor);
-    this.strip = new mesh.Rope(loader.resources.tooth.texture, this.skeleton.points);
+    this.strip = new mesh.Rope(loader.resources[`${options.id}-tooth`].texture, this.skeleton.points);
     this.oscillator = new Oscillator(options);
     this.oscillator.onVibrationEnd(() => this.onVibrationEnd());
     this.offsetX = 0;
@@ -77,11 +77,11 @@ class Tooth {
     this.twisted = false;
     this.offsetX = 0;
     this.oscillator.triggerVibration();
-    this.strip.texture = loader.resources.toothActive.texture;
+    this.strip.texture = loader.resources[`${this.options.id}-toothActive`].texture;
   }
 
   onVibrationEnd() {
-    this.strip.texture = loader.resources.tooth.texture;
+    this.strip.texture = loader.resources[`${this.options.id}-tooth`].texture;
   }
 
   render() {

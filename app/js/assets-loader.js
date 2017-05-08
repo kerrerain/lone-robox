@@ -1,15 +1,14 @@
 import { loader } from 'pixi.js';
 
 class AssetsLoader {
-  static load(options, cb) {
-    loader.add('comb', options.comb.image);
-    loader.add('tooth', options.tooth.image);
-    loader.add('toothActive', options.tooth.imageActive);
-    loader.add('cylinder', options.cylinder.image);
-    loader.add('pin', options.pin.image);
-    loader.add('buttonPlay', options.buttons.play.image);
-    loader.add('buttonStop', options.buttons.stop.image);
-    loader.add('buttonPause', options.buttons.pause.image);
+  static load(boxes, cb) {
+    Object.keys(boxes).forEach((key) => {
+      loader.add(`${key}-comb`, boxes[key].comb.image);
+      loader.add(`${key}-tooth`, boxes[key].tooth.image);
+      loader.add(`${key}-toothActive`, boxes[key].tooth.imageActive);
+      loader.add(`${key}-cylinder`, boxes[key].cylinder.image);
+      loader.add(`${key}-pin`, boxes[key].pin.image);
+    });
     loader.load(cb);
   }
 }

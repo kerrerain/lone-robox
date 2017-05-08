@@ -8,7 +8,7 @@ class Comb {
     this.options = options;
     this.running = false;
 
-    this.sprite = new Sprite(loader.resources.comb.texture);
+    this.sprite = new Sprite(loader.resources[`${options.id}-comb`].texture);
     this.sprite.scale.set(options.comb.scale);
 
     this.cylinder = new Cylinder(options);

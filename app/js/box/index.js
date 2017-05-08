@@ -24,7 +24,7 @@ class Box {
     this.sequencer.loadFile(options.sequencer.file).then(() => {
       // Analysis of the score to find how many notes should be displayed
       this.notesToDisplay = notes(this.sequencer.notes());
-      const mergedOptions = _.merge(options, {
+      const mergedOptions = _.merge({}, options, {
         comb: {
           teeth: this.notesToDisplay.length,
         },
