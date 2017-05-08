@@ -1,9 +1,7 @@
 import Tone from 'tone';
 
 class Synth {
-  constructor(options) {
-    this.options = options;
-
+  constructor() {
     this.synth = new Tone.PolySynth(8, Tone.FMSynth).toMaster();
     this.synth.set({
       harmonicity: 8,
@@ -27,6 +25,10 @@ class Synth {
         release: 0.7,
       },
     });
+  }
+
+  loadOptions(options) {
+    this.options = options;
   }
 
   playNote(time, note) {

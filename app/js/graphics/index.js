@@ -1,12 +1,16 @@
 import { Sprite, loader, Container } from 'pixi.js';
-import TeethContainer from './teeth-container';
-import PinsContainer from './pins-container';
+import TeethContainer from './teeth';
+import PinsContainer from './pins';
 import Cylinder from './cylinder';
 
-class Comb {
-  constructor(options) {
-    this.options = options;
+class Graphics {
+  constructor() {
     this.running = false;
+    this.container = new Container();
+  }
+
+  loadOptions(options) {
+    this.options = options;
 
     this.sprite = new Sprite(loader.resources[`${options.id}-comb`].texture);
     this.sprite.scale.set(options.comb.scale);
@@ -15,7 +19,7 @@ class Comb {
     this.teethContainer = this.createTeethContainer();
     this.pinsContainer = this.createPinsContainer();
 
-    this.container = new Container();
+    this.container.removeChildren();
     this.container.addChild(this.cylinder.container);
     this.container.addChild(this.pinsContainer.container);
     this.container.addChild(this.teethContainer.container);
@@ -94,4 +98,4 @@ class Comb {
   }
 }
 
-export default Comb;
+export default Graphics;

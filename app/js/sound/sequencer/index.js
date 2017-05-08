@@ -2,12 +2,23 @@ import MidiConvert from 'midiconvert';
 import Tone from 'tone';
 
 class Sequencer {
-  constructor(options) {
-    this.options = options;
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    if (this.part != null) {
+      this.part.dispose();
+    }
     this.part = null;
     this.file = null;
     this.transport = Tone.Transport;
     this.onNoteEventCallbacks = [];
+  }
+
+  loadOptions(options) {
+    this.reset();
+    this.options = options;
   }
 
   onNoteEvent(cb) {

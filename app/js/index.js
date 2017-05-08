@@ -1,11 +1,11 @@
 import $ from 'jquery';
 import toggle from './gui/toggle';
 import Demo from './demos/box';
-import boxes from './custom-boxes';
+import boxes from './boxes';
 import AssetsLoader from './assets-loader';
 
 function setup() {
-  const demo = new Demo(boxes.dummy);
+  const demo = new Demo();
 
   $.fn.toggle = toggle;
 
@@ -13,14 +13,14 @@ function setup() {
 
   const button = $('#button-play').toggle((state) => {
     if (state === true) {
-      demo.box.start();
+      demo.start();
     } else {
-      demo.box.pause();
+      demo.pause();
     }
   });
 
   $('#button-stop').on('click', () => {
-    demo.box.stop();
+    demo.stop();
     button.reset();
   });
 
@@ -29,8 +29,10 @@ function setup() {
   });
 
   $('#box-selection').on('change', function handler() {
-    demo.changeBox(boxes[this.value]);
+    demo.loadOptions(boxes[this.value]);
   });
+
+  demo.loadOptions(boxes.dummy);
 }
 
 AssetsLoader.load(boxes, setup);
