@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import { Application } from 'pixi.js';
-import Graphics from '../graphics';
-import Sound from '../sound';
+import Graphics from '../../graphics';
+import Sound from '../../sound';
 
-class DemoBox {
+class Demo {
   constructor() {
     this.setupGraphics();
     this.setupSound();
@@ -75,4 +75,4 @@ class DemoBox {
   }
 }
 
-export default DemoBox;
+export default Demo;
