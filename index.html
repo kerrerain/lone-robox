@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head lang="en">
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="description" content="">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Lone Robox</title>
-	</head>
-	<body>
-	<script type="text/javascript" src="bundle.js"></script></body>
+
+<head lang="en">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		Lone Robox
+	</title>
+	<link type="text/css" rel="stylesheet" href="css/normalize.css">
+	<link type="text/css" rel="stylesheet" href="css/skeleton.css">
+	<link type="text/css" rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div id="menu" class="three columns">
+				<h1>Lone Robox</h1>
+				<button id="button-play" class="button-primary u-full-width">Play</button>
+				<button id="button-stop" class="button-primary u-full-width">Stop</button>
+				<form>
+					<label for="box-selection">Select a box</label>
+					<select id="box-selection" class="u-full-width">
+					</select>
+				</form>
+			</div>
+			<div id="canvas" class="nine columns"></div>
+		</div>
+	</div>
+<script type="text/javascript" src="bundle.js"></script></body>
+
 </html>
